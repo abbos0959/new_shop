@@ -4,6 +4,8 @@ import { Filter } from "./component/Filter";
 import { Home } from "./component/Home";
 import { Navbar } from "./component/Navbar";
 import { Product } from "./component/Product";
+import { Routes, Route } from "react-router-dom";
+import { ProductRouter } from "./component/ProductRouter";
 
 function App() {
   useEffect(() => {
@@ -18,33 +20,39 @@ function App() {
       .then((data) => setfil(data));
   }, []);
   const [dat, setappData] = useState([]);
-  console.log(dat,"bu api");
-  
+  console.log(dat, "bu api");
 
   const [Data, setData] = useState(dat);
-  console.log(Data,"salom uka");
+  console.log(Data, "salom uka");
 
-  const [fil, setfil] = useState([]); 
+  const [fil, setfil] = useState([]);
 
   const Allcategory = ["all", ...fil];
 
   const handleFilter = (val) => {
     if (val === "all") {
-      setappData(dat);
-      return
+      setData(dat);
+      return;
     }
 
     const abbos = dat.filter((item) => item.category === val);
-    setappData(abbos);
+    setData(abbos);
   };
-console.log(Data,"bu data");
+  console.log(Data, "bu data");
   return (
-    <div className="App">
+    <>
       <Navbar />
+
       <Home />
-      <Filter handleFilter={handleFilter} setData={setData} dat={dat} Allcategory={Allcategory} />
+      <Filter
+        handleFilter={handleFilter}
+        setData={setData}
+        dat={dat}
+        Allcategory={Allcategory}
+      />
       <Product dat={dat} Data={Data} />
-    </div>
+      <ProductRouter />
+    </>
   );
 }
 

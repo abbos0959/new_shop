@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {Link} from "react-router"
 
 export const Product = ({ Data ,dat}) => {
     
@@ -13,7 +14,7 @@ export const Product = ({ Data ,dat}) => {
             <h4>{val.price}$ </h4>
           </div>
           <button className="button">
-            <span>Buy Now</span>
+            <span>  Buy Now</span>
           </button>
         </div>
       ))}
